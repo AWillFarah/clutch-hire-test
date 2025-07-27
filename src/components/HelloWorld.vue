@@ -1,124 +1,112 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-        >vue-cli documentation</a
-      >.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-          target="_blank"
-          rel="noopener"
-          >router</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-          target="_blank"
-          rel="noopener"
-          >eslint</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
-          target="_blank"
-          rel="noopener"
-          >typescript</a
-        >
-      </li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
-          >Forum</a
-        >
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-          >Community Chat</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-          >Twitter</a
-        >
-      </li>
-      <li>
-        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
-      </li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li>
-        <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-          >vue-router</a
-        >
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
-          target="_blank"
-          rel="noopener"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-          >vue-loader</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-          rel="noopener"
-          >awesome-vue</a
-        >
-      </li>
-    </ul>
+    <img src="../assets/greentech.png" alt="Logo" class="logo" />
+    <div class="whitespace"></div>
+    <h1>Have us reach out</h1>
+
+    <form>
+      <label for="first">First Name</label>
+      <br />
+      <input type="text" id="first" name="first" /><br />
+      <label for="last">Last Name</label>
+      <br />
+      <input type="text" id="last" name="last" /><br />
+      <label for="email">Email</label>
+      <br />
+      <input type="email" id="email" name="email" /><br />
+      <label for="phone">Phone Number</label>
+      <br />
+      <input type="text" id="phone" name="phone" /><br />
+      <label for="company">Company</label>
+      <br />
+      <input type="text" id="company" name="company" /><br />
+      <input type="submit" value="Continue" /><br />
+    </form>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts"></script>
 
-export default defineComponent({
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
-});
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
+.hello {
+  margin: 30px 35px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+img {
+  width: 122.82685852050781px;
+  height: 40px;
+  top: 30px;
+  left: 35px;
+  opacity: 1;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+.whitespace {
+  height: 178px;
 }
-a {
-  color: #42b983;
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  color: #555552;
+  width: 310px;
+  height: 29px;
+  top: 208px;
+  left: 36px;
+  angle: 0deg;
+  opacity: 1;
+}
+
+label {
+  font-family: "AbeeZee", sans-serif;
+  font-weight: 400;
+  height: 17.27px;
+
+  position: relative;
+  bottom: -10px;
+  left: 12px;
+
+  font-style: Regular;
+  font-size: 12px;
+  text-align: center;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-indent: 0%;
+  padding: 1.26px 6.32px;
+  background-color: white;
+  color: #006315;
+}
+input {
+  width: 310px;
+  height: 40.31999969482422px;
+
+  border-radius: 3.6px;
+  border-width: 0.72px;
+  border-color: #555552;
+
+  color: #555552;
+  font-family: "AbeeZee", sans-serif;
+
+  padding-left: 20.1px;
+  font-size: 15px;
+  font-weight: 400;
+}
+input[type="submit"] {
+  background-color: #0b476c;
+  color: white;
+  font-size: 13.45px;
+  width: 131px;
+  height: 34.83px;
+  border-radius: 4px;
+  border: none;
+
+  position: relative;
+  top: 92px;
+  left: 180px;
+  border-radius: 4px;
+  padding-top: 10.22px;
+  padding-right: 37.5px;
+  padding-bottom: 8.61px;
+  padding-left: 37.5px;
+  gap: 5.38px;
 }
 </style>
