@@ -1,5 +1,6 @@
 <template>
-  <router-view class="fade" />
+  <nav></nav>
+  <router-view />
 </template>
 
 <style lang="scss">

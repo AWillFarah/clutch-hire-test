@@ -41,7 +41,7 @@
           name="phone"
           required
           v-model="form.phone"
-          @input="maskPhone"
+          pattern="\d{10}"
         /><br />
         <label for="company">Company</label>
         <br />
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-// Im assuming reactive and ref are some sort of pointers?
+import { AsYouTypeFormatter } from "libphonenumber-js";
 
 export default {
   data() {
@@ -76,11 +76,33 @@ export default {
         company: "",
       },
       thankYou: false,
+      // Going to write comments galore for this here since im the least certain about this
+      apiUrl:
+        "https://dev-api-api.hiring-test.experientialpreview.com/api/lead/3e430654-949b-4c46-bbfe-5afb7f6d37ac",
     };
   },
   methods: {
-    handleSubmit(event) {
-      console.log("Form submitted:");
+    async handleSubmit(event) {
+      // Well this is pretty straightforward, it's going to "try" to submit the data here
+      try {
+        console.log("Submitting form data to API:", this.form);
+        // Here we are trying to post data to the URL
+        const response = await fetch(this.apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // The body here is the stuff we actually send to the API
+          body: JSON.stringify(this.form),
+        });
+        if (response.ok) {
+          console.log("Form data submitted successfully");
+        } else {
+          console.error("Failed to submit form data:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error submitting form data:", error);
+      }
       this.thankYou = true;
       // Reset the form
       this.form.first = "";
@@ -92,19 +114,6 @@ export default {
         this.thankYou = false;
       }, 5000);
     },
-  },
-  maskPhone(event) {
-    let value = event.target.value.replace(/\D/g, "");
-    if (value.length > 10) value = value.slice(0, 10);
-    if (value.length > 6) {
-      value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6)}`;
-    } else if (value.length > 3) {
-      value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
-    } else if (value.length > 0) {
-      value = `(${value}`;
-    }
-    this.form.phone = value;
-    event.target.value = value; // keep input in sync
   },
 };
 </script>
