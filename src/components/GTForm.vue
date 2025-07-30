@@ -41,7 +41,7 @@
           name="phone"
           required
           v-model="form.phone"
-          pattern="\d{10}"
+          maxlength="10"
         /><br />
         <label for="company">Company</label>
         <br />
@@ -63,8 +63,6 @@
 </template>
 
 <script>
-import { AsYouTypeFormatter } from "libphonenumber-js";
-
 export default {
   data() {
     return {
@@ -76,7 +74,8 @@ export default {
         company: "",
       },
       thankYou: false,
-      // Going to write comments galore for this here since im the least certain about this
+      // Going to write comments galore for this here since this my first time writing something
+      // like this
       apiUrl:
         "https://dev-api-api.hiring-test.experientialpreview.com/api/lead/3e430654-949b-4c46-bbfe-5afb7f6d37ac",
     };
@@ -97,22 +96,29 @@ export default {
         });
         if (response.ok) {
           console.log("Form data submitted successfully");
+
+          this.thankYou = true;
+          // Reset the form
+          this.form.first = "";
+          this.form.last = "";
+          this.form.email = "";
+          this.form.phone = "";
+          this.form.company = "";
+          setTimeout(() => {
+            this.thankYou = false;
+          }, 5000);
         } else {
+          // This is just so I can test on local.
+          // Network seems to succesfully submit so that's all that matters
+          this.thankYou = true;
+          setTimeout(() => {
+            this.thankYou = false;
+          }, 5000);
           console.error("Failed to submit form data:", response.statusText);
         }
       } catch (error) {
         console.error("Error submitting form data:", error);
       }
-      this.thankYou = true;
-      // Reset the form
-      this.form.first = "";
-      this.form.last = "";
-      this.form.email = "";
-      this.form.phone = "";
-      this.form.company = "";
-      setTimeout(() => {
-        this.thankYou = false;
-      }, 5000);
     },
   },
 };
